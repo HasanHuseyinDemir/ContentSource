@@ -1,5 +1,3 @@
-let pages=[];
-if(pages.length>0){
     pages.map(async(item)=>{
         let source = await fetch(item.src);
         let data = await source.text();
@@ -12,7 +10,7 @@ if(pages.length>0){
         const componentName= item.component;
         interpolationTest(item.data,componentName);
     });
-}
+
 
 
 createContent=(name,data)=>{
