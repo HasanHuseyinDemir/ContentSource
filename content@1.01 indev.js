@@ -138,16 +138,3 @@ if(typeof variable=="string"){
 }
     eval(`${arg}.render()`);
 }
-
-
-createAtom=(name,data)=>{
-    let x = document.createElement("div");
-    x.innerHTML=data;
-    customElements.define(name,
-    class extends HTMLElement {
-    constructor() {
-    super();
-    let template = x.firstElementChild.content;
-    const shadowRoot = this.attachShadow({mode: 'open'});
-    shadowRoot.appendChild(template.cloneNode(true));
-}})};
