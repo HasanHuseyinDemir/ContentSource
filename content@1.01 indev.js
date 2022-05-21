@@ -1,3 +1,4 @@
+let pages=[];
 if(pages){
     pages.map(async(item)=>{
         let source = await fetch(item.src);
