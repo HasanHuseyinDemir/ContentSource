@@ -1,15 +1,18 @@
-pages.map(async(item)=>{
-    let source = await fetch(item.src);
-    let data = await source.text();
-    item.data=data;
-    item.render=async()=>{
-        var element = document.querySelector(item.component).shadowRoot.firstElementChild;
-        let filter = removeTemplateTag(data);
-        renderTest(filter,element);
-    }
-    const componentName= item.component;
-    interpolationTest(item.data,componentName);
-});
+if(pages){
+    pages.map(async(item)=>{
+        let source = await fetch(item.src);
+        let data = await source.text();
+        item.data=data;
+        item.render=async()=>{
+            var element = document.querySelector(item.component).shadowRoot.firstElementChild;
+            let filter = removeTemplateTag(data);
+            renderTest(filter,element);
+        }
+        const componentName= item.component;
+        interpolationTest(item.data,componentName);
+    });
+}
+
 
 createContent=(name,data)=>{
         let x = document.createElement("div");
