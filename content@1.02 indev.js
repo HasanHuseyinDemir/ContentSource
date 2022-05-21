@@ -1,5 +1,5 @@
 let pages=[];
-if(pages){
+if(pages.length>0){
     pages.map(async(item)=>{
         let source = await fetch(item.src);
         let data = await source.text();
