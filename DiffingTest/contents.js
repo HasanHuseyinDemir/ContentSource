@@ -13,8 +13,11 @@ let atomDeneme={
     }
 }
 
-let x = 0 ;
-let y = 0 ; 
+window.x = 1 ;
+window.y = 0 ; 
+window.z = 100;
 
+
+dataSet.value.push("x","y","z");
 let contents=[PageTest,atomDeneme];
 
