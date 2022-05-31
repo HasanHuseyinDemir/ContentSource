@@ -1,6 +1,4 @@
-
-
-window.createComponent=(name,data)=>{
+createComponent=(name,data)=>{
     customElements.define(name,class extends HTMLElement {
         connectedCallback() {
           this.innerHTML = data;
@@ -60,13 +58,13 @@ contents.map(async(item)=>{
             }break;
         }})
 
-window.removeTemplateTag=(data)=>{
+removeTemplateTag=(data)=>{
         const removeStart = data.replace("<template>","");
         const removeEnd = removeStart.replace("</template>","");
         return removeEnd
 }
 
-window.composition=(name,data)=>{
+composition=(name,data)=>{
     let x = document.createElement("div");
     x.innerHTML=data;
     customElements.define(name,
@@ -78,7 +76,7 @@ window.composition=(name,data)=>{
     shadowRoot.appendChild(template.cloneNode(true));
 }})};
 
-window.renderTest=(str,item,condition)=>{
+renderTest=(str,item,condition)=>{
     const first = "{{";
     const last = "}}";
     let starter = str.search(first);
@@ -130,11 +128,20 @@ window.renderTest=(str,item,condition)=>{
     }
 };
 
-
-
-
-window.val=()=>{
+val=()=>{
     contents.map((el)=>{if(el.type!=="static-page"&&el.type!=="static-atom"&&el.type!=="static-composition"&&el.type!=="text"){
         el.render()}
     });
+}
+
+gVal=(name)=>{
+    contents.map((item)=>{
+        if(item.name.toLowerCase()===name.toLowerCase()){
+            item.render();
+        }
+    })
+}
+
+let set=()=>{
+    contents.map((el)=>{if(el.type=="atom"){el.render()}});
 }

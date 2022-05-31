@@ -1,18 +1,9 @@
 let PageTest={
     src:"PageTest.html",
-    type:"static-page",
+    type:"page",
     name:"Page-Test"
 }
-let DenemeSayfa={
-    src:"DenemeSayfa.html",
-    type:"page",
-    name:"Deneme-sayfa",
-}
-let BaskaSayfa={
-    src:"baskaSayfa.html",
-    type:"page",
-    name:"Baska-Sayfa",
-}
+
 
 let atomDeneme={
     type:"atom",
@@ -25,5 +16,5 @@ let atomDeneme={
 let x = 0 ;
 let y = 0 ; 
 
-let contents=[PageTest,DenemeSayfa,BaskaSayfa,atomDeneme];
+let contents=[PageTest,atomDeneme];
 
