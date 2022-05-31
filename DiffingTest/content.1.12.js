@@ -26,9 +26,7 @@ contents.map(async(item)=>{
                     createComponent(item.alt,data);
                 }
             };break;
-            
             case "static-atom":createComponent(item.name,item.data());break;
-
             case "atom":{
                     createComponent(item.alt,item.data()),
                     item.prev=item.data();
@@ -49,7 +47,6 @@ contents.map(async(item)=>{
                     let filter = removeTemplateTag(data);
                     renderTest(filter,item,"test-composition");
                 }
-                console.log(item.alt);
                 renderTest(item.data,item,"composition");
             }break;
             case "static-composition":{
@@ -102,8 +99,6 @@ window.renderTest=(str,item,condition)=>{
         }
         if(item.type=="static-page"||item.type=="static-atom"||item.type=="static-composition"){
         }else{
-            console.log(item.alt);
-            
             if(item.prev==""){//INIT!
             item.prev=str;
             if(item.type=="page"){
