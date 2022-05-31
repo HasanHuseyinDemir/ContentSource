@@ -3,5 +3,12 @@ let PageTest={
     type:"page",
     name:"PageTest"
 }
+let DenemeSayfa={
+    src:"DenemeSayfa.html",
+    type:"page",
+    name:"DenemeSayfa",
+}
 
-let contents=[PageTest];
+let x = 0 ;
+
+let contents=[PageTest,DenemeSayfa];
