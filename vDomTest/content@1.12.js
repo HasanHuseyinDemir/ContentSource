@@ -159,7 +159,7 @@ control=async()=>{
 }
 
 
-//<data>
+//
 datacontrol=()=>{
     document.querySelectorAll("*").forEach((item)=>{
     var data = item.getAttribute("data");
@@ -168,51 +168,55 @@ datacontrol=()=>{
     }
 })};
 
-//<list>
+//
 mapcontrol=()=>{
-    document.querySelectorAll("map").forEach((item)=>{
+    document.querySelectorAll("*").forEach((item)=>{
     var data = item.getAttribute("array");
     var type = item.getAttribute("type");
     var content = "";
-    eval(data).forEach((el)=>{
-        content+=`<${type}>${el}</${type}>`;
+    if(data&&type){
+        eval(data).forEach((el)=>{
+            content+=`<${type}>${el}</${type}>`;
+        })
+        item.innerHTML!=content.toString()?item.innerHTML=(content.toString()):"";
+        }
     })
-    item.innerHTML!=content.toString()?item.innerHTML=(content.toString()):"";
-    })
+
 }
 
 ifcontrol=()=>{
-    document.querySelectorAll("if").forEach((item)=>{
-    var query = item.getAttribute("?");
-
+    document.querySelectorAll("*").forEach((item)=>{
+    var query = item.getAttribute("if");
     var valid = item.getAttribute("true");
     var invalid = item.getAttribute("false");
-    if(eval(query)==true){
-
-
-        if(valid){
-            item.innerHTML!=eval(valid).toString()?item.innerHTML=(eval(valid).toString()):"";
+        if(query){
+            if(eval(query)==true){
+                if(valid){
+                    item.innerHTML!=eval(valid).toString()?item.innerHTML=(eval(valid).toString()):"";
+                }
+            }else{
+                if(invalid){
+                    item.innerHTML!=eval(invalid).toString()?item.innerHTML=(eval(invalid).toString()):"";
+                }
+            }
         }
-
-    }else{
-        if(invalid){
-            item.innerHTML!=eval(invalid).toString()?item.innerHTML=(eval(invalid).toString()):"";
-        }
-    }
     })
 }
 
 patterncontrol=()=>{
-    document.querySelectorAll("pattern").forEach((item)=>{
-    var data = item.getAttribute("set");
-    var array = item.getAttribute("array");
-    var content;
-    content = eval(array).map((items,index)=>{
-        return eval(data);
-    }).join("");
-    item.innerHTML.toString()!=content.toString()?item.innerHTML=content.toString():"";  
-    })
-}
+    document.querySelectorAll("pattern").forEach((items)=>{
+    var data = items.getAttribute("set");
+    var array = items.getAttribute("array");
+    if(set&&array){
+        var content;
+        content = eval(array).map((item,index)=>{
+            return eval(data);
+        }).join('');
+        var filt = content.toString();
+        items.innerHTML.toString()!=filt?items.innerHTML=filt:"";  
+}})
+    }
+
 
 invisiblecontrol=()=>{
     document.querySelectorAll("*").forEach((item)=>{

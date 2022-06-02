@@ -20,5 +20,10 @@
 
 
 -->
-<h1 data="y" invisible="x==y"></h1>
-<h1 data="x"></h1>
+<span visible="x<y">
+    <h1 visible="x%5==0"><c data="`${x} / 5`"></c>Mod Sıfır</h1>
+    <h1 visible="x%5==1"><c data="`${x} / 5`"></c>Mod Bir</h1>
+    <h1 visible="x%5==2"><c data="`${x} / 5`"></c>Mod İki</h1>
+    <h1 visible="x%5==3"><c data="`${x} / 5`"></c>Mod Üç</h1>
+    <h1 visible="x%5==4"><c data="`${x} / 5`"></c>Mod Dört</h1>
+</span>
