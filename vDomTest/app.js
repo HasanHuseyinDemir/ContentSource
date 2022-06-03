@@ -1,7 +1,7 @@
 let PageTest={
     src:"./page-test.html",
     type:"page",
-    name:"page-test",
+    name:"PageTest",
 }
 
 let x = 0;
@@ -18,3 +18,12 @@ let total=()=>{return price*quantity};
 
 
 console.log(`total is ${total()}`)
+
+window.yeniSayfa={
+    src:"./YeniSayfa.html",
+    type:"page",
+    name:"YeniSayfa",
+}
+contents.push(yeniSayfa);
+
+
