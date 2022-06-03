@@ -1,6 +1,6 @@
 let date =()=> new Date();
 let timerAtom ={
-    name:"atom-timer",
+    name:"Timer",
     type:"atom",
     data:()=>{
         return `<span data="date().getHours()"></span> : <span data="date().getMinutes()"></span> : <span data="date().getSeconds()"></span>`

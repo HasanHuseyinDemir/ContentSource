@@ -1,9 +1,34 @@
-contents.map(async(item)=>{
+let ________=0;
+contents.map(async(item,ind)=>{
         switch(item.type){
             case "page":{let source = await fetch(item.src);let data = await source.text();
             renderTest(data,item);
+            item.render=(()=>{
+                let index = document.querySelectorAll(item.name);
+                index.forEach((i,index)=>{
+                    let element = document.querySelectorAll(item.name)[index];
+                    element.innerHTML.toString().length==0?element.innerHTML=item.data:"";
+                })
+            })
+            }break;            
+            case "atom":{
+                item.render=()=>{
+                    let index = document.querySelectorAll(item.name);
+                    index.forEach((i,index)=>{
+                        let element = document.querySelectorAll(item.name)[index];
+                        element.innerHTML.toString().length==0?element.innerHTML=item.data():"";
+                    })
+                    }
             }break;
-}})
+        }
+        
+        ///RENDER SORUNLARINI ÇÖZMEK AMAÇLI
+        ________++
+        if(________==contents.length){
+            val();
+        }
+        
+    })
 
 renderTest=(str,item,condition)=>{
     const first = "{{";
@@ -55,6 +80,7 @@ scriptTest=(str,item)=>{
                 let index = document.querySelectorAll(item.name);
                 index.forEach((i,index)=>{
                     let element = document.querySelectorAll(item.name)[index];
+                    item.data=str;
                     element.innerHTML=str;
                 })
         }else{
@@ -113,11 +139,18 @@ control=()=>{
         item.innerHTML.toString()!=filt?item.innerHTML=filt:"";  
     }
     /////////////////////////////////////////////////
-    inv?(eval(inv)?item.style.display="none":item.style.display=""):"";
-    vis?(eval(vis)?item.style.display="":item.style.display="none"):"";
+    inv?(eval(inv)?item.style.display="none":item.style.display="block"):"";
+    vis?(eval(vis)?item.style.display="block":item.style.display="none"):"";
     ///////////////////////////////////
     value?(item.innerHTML.toString()!=eval(value)?item.value=eval(value):""):"";  
     ////////////////////////////////////
 })};
 
+
+val=()=>{
+    contents.map((items)=>{
+        items.render()
+    });
+    set();
+}
 
