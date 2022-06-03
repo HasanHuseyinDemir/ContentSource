@@ -25,7 +25,7 @@ Price:<br>
 Quantity:<br>
 <input oninput="set(quantity=this.value)" setValue="quantity"><br><br>
 
-<h1 data="x"></h1>
+<h1 data="x" invisible="x%5==0" visible="x%5==2"></h1>
 Price : <span data="price"></span><br>
 Quantity : <span data="quantity"></span><br>
 Total : <span data="price*quantity"></span><br>
@@ -35,3 +35,5 @@ Total : <span data="price*quantity"></span><br>
 <hr>
 <atom-timer style="font-size:45px"></atom-timer><br>
 <button onclick="toggleTimer()" data="activeTimer?'Durdur':'Başlat'"></button>
+
+<ul array="samplelist" type="li"></ul>

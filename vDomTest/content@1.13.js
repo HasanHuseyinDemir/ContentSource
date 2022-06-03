@@ -113,9 +113,12 @@ renderTest=(str,item,condition)=>{
                     elements.innerHTML=str;
 
                 }else{
+
+                    console.log(str);
                 let element = document.querySelectorAll(item.alt)[index];
                 element.innerHTML=str;
-                }
+                
+            }
                 item.prev=str;
             })
             
@@ -151,46 +154,33 @@ let set=()=>{
     control();
 }
 
-control=async()=>{
-    invisiblecontrol();
-    datacontrol();
-    mapcontrol();
-    ifcontrol();
-    patterncontrol();
-    valuecontrol();
-}
 
-
-//
-datacontrol=()=>{
+control=()=>{
     document.body.querySelectorAll("*").forEach((item)=>{
     var data = item.getAttribute("data");
-    if(data){
-        item.innerHTML!=(eval(data).toString())?item.innerHTML=(eval(data).toString()):"";
-    }
-})};
-
-//
-mapcontrol=()=>{
-    document.body.querySelectorAll("*").forEach((item)=>{
-    var data = item.getAttribute("array");
+    var set = item.getAttribute("set");
+    var array = item.getAttribute("array");
     var type = item.getAttribute("type");
-    var content = "";
-    if(data&&type){
-        eval(data).forEach((el)=>{
-            content+=`<${type}>${el}</${type}>`;
-        })
-        item.innerHTML!=content.toString()?item.innerHTML=(content.toString()):"";
-        }
-    })
-
-}
-
-ifcontrol=()=>{
-    document.body.querySelectorAll("*").forEach((item)=>{
     var query = item.getAttribute("if");
     var valid = item.getAttribute("true");
     var invalid = item.getAttribute("false");
+    var inv = item.getAttribute("invisible");
+    var vis = item.getAttribute("visible");
+    var value = item.getAttribute("setValue");
+    var content = "";
+    if(data){
+        item.innerHTML!=(eval(data).toString())?item.innerHTML=(eval(data).toString()):"";
+    }
+    //////////////////////////////////////////////////MAP
+
+    if(array&&type){
+        eval(array).forEach((el)=>{
+            content+=`<${type}>${el}</${type}>`;
+        })
+        item.innerHTML!=content.toString()?item.innerHTML=(content.toString()):"";
+    }
+    
+    ///////////////////////////////////////////////////IF ELSE
         if(query){
             if(eval(query)==true){
                 if(valid){
@@ -202,37 +192,20 @@ ifcontrol=()=>{
                 }
             }
         }
-    })
-}
+    ////////////////////////////////////////////////
 
-patterncontrol=()=>{
-    document.body.querySelectorAll("pattern").forEach((items)=>{
-    var data = items.getAttribute("set");
-    var array = items.getAttribute("array");
     if(set&&array){
-        var content;
-        content = eval(array).map((item,index)=>{
+        content = eval(array).map((items,index)=>{
             return eval(data);
         }).join('');
         var filt = content.toString();
-        items.innerHTML.toString()!=filt?items.innerHTML=filt:"";  
-}})
+        item.innerHTML.toString()!=filt?item.innerHTML=filt:"";  
     }
-
-
-invisiblecontrol=()=>{
-    document.body.querySelectorAll("*").forEach((item)=>{
-        var inv = item.getAttribute("invisible");
-        var vis = item.getAttribute("visible");
-        inv?(eval(inv)?item.style.display="none":item.style.display=""):"";
-        vis?(eval(vis)?item.style.display="":item.style.display="none"):"";
-    })
-}
-
-valuecontrol=()=>{
-    document.body.querySelectorAll("*").forEach((items  )=>{
-        var value = items.getAttribute("setValue");
-        items.innerHTML.toString()!=eval(value)?items.value=eval(value):"";  
-    })
-}
+    /////////////////////////////////////////////////
+    inv?(eval(inv)?item.style.display="none":item.style.display=""):"";
+    vis?(eval(vis)?item.style.display="":item.style.display="none"):"";
+    ///////////////////////////////////
+    value?(item.innerHTML.toString()!=eval(value)?item.value=eval(value):""):"";  
+    ////////////////////////////////////
+})};
 
