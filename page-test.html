@@ -1,0 +1,42 @@
+<h1>Selamlar</h1>
+<!--<data set="`<h1>Selamlars (${y%5})</h1>`"></data>
+<data set="y"></data>
+<map type="li" set="samplelist"></map>
+<hr>
+<if ?="y==x" true="`<b>${y+5}</b>`" false="''"></if>
+<pattern array="merhaba" set="`<h1>${items.img}  ${items.src}</h1>`"></pattern>
+<hr>
+
+<data set="x==y?`${x} ile ${y} eşit!`:'eşit Değil'"></data>
+
+
+<b invisible>Selam</b>
+<hr>
+
+<if ?="y==x" str="<pattern array='merhaba' set='`<h1>${items.img}  ${items.src}<h1>`'></pattern>" !str=" "></if>
+
+    <data visible="x==y" set="y"></data>
+
+
+
+-->
+Price:<br>
+<input oninput="set(price=this.value)" setValue="price"><br><br>
+Quantity:<br>
+<input oninput="set(quantity=this.value)" setValue="quantity"><br><br>
+
+<h1 data="x" invisible="x%5==0" visible="x%5==2"></h1>
+Price : <span data="price"></span><br>
+Quantity : <span data="quantity"></span><br>
+Total : <span data="price*quantity"></span><br>
+<button onclick="set(price++)"><span data="price"></span>+</button>
+
+
+<hr>
+<atom-timer style="font-size:45px"></atom-timer><br>
+<button onclick="toggleTimer()" data="activeTimer?'Durdur':'Başlat'"></button>
+
+<ul array="samplelist" type="li"></ul>
+
+
+{{x}}

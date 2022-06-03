@@ -1,7 +1,7 @@
 let PageTest={
     src:"./page-test.html",
-    type:"static-page",
-    name:"page-test"
+    type:"page",
+    name:"page-test",
 }
 
 let x = 0;
