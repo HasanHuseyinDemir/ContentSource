@@ -15,4 +15,6 @@ let price = 5
 let quantity = 2
 let total=()=>{return price*quantity};
 
+
+
 console.log(`total is ${total()}`)
