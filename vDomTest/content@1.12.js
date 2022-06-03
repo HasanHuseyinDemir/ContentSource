@@ -161,7 +161,7 @@ control=async()=>{
 
 //
 datacontrol=()=>{
-    document.querySelectorAll("*").forEach((item)=>{
+    document.body.querySelectorAll("*").forEach((item)=>{
     var data = item.getAttribute("data");
     if(data){
         item.innerHTML!=(eval(data).toString())?item.innerHTML=(eval(data).toString()):"";
@@ -170,7 +170,7 @@ datacontrol=()=>{
 
 //
 mapcontrol=()=>{
-    document.querySelectorAll("*").forEach((item)=>{
+    document.body.querySelectorAll("*").forEach((item)=>{
     var data = item.getAttribute("array");
     var type = item.getAttribute("type");
     var content = "";
@@ -185,7 +185,7 @@ mapcontrol=()=>{
 }
 
 ifcontrol=()=>{
-    document.querySelectorAll("*").forEach((item)=>{
+    document.body.querySelectorAll("*").forEach((item)=>{
     var query = item.getAttribute("if");
     var valid = item.getAttribute("true");
     var invalid = item.getAttribute("false");
@@ -204,7 +204,7 @@ ifcontrol=()=>{
 }
 
 patterncontrol=()=>{
-    document.querySelectorAll("pattern").forEach((items)=>{
+    document.body.querySelectorAll("pattern").forEach((items)=>{
     var data = items.getAttribute("set");
     var array = items.getAttribute("array");
     if(set&&array){
@@ -219,7 +219,7 @@ patterncontrol=()=>{
 
 
 invisiblecontrol=()=>{
-    document.querySelectorAll("*").forEach((item)=>{
+    document.body.querySelectorAll("*").forEach((item)=>{
         var inv = item.getAttribute("invisible");
         var vis = item.getAttribute("visible");
         inv?(eval(inv)?item.style.display="none":item.style.display=""):"";
