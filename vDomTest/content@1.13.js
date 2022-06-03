@@ -123,7 +123,7 @@ renderTest=(str,item,condition)=>{
             })
             
         }
-        control()
+        set()
     }
         }else{
         let interp = str.slice(starter+first.length,endPoint)
