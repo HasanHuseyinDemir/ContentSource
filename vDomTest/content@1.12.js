@@ -134,7 +134,7 @@ val=()=>{
     contents.map((el)=>{if(el.type!=="static-page"&&el.type!=="static-atom"&&el.type!=="static-composition"&&el.type!=="text"){
         el.render()}
     });
-    control()
+    set();
 }
 
 gVal=(name)=>{
@@ -143,7 +143,7 @@ gVal=(name)=>{
             item.render();
         }
     })
-    control()
+    set();
 }
 
 let set=()=>{
@@ -157,6 +157,7 @@ control=async()=>{
     mapcontrol();
     ifcontrol();
     patterncontrol();
+    valuecontrol();
 }
 
 
@@ -225,5 +226,12 @@ invisiblecontrol=()=>{
         var vis = item.getAttribute("visible");
         inv?(eval(inv)?item.style.display="none":item.style.display=""):"";
         vis?(eval(vis)?item.style.display="":item.style.display="none"):"";
+    })
+}
+
+valuecontrol=()=>{
+    document.body.querySelectorAll("*").forEach((items  )=>{
+        var value = items.getAttribute("setValue");
+        items.innerHTML.toString()!=eval(value)?items.value=eval(value):"";  
     })
 }

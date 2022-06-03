@@ -21,11 +21,17 @@
 
 -->
 Price:<br>
-<input oninput="set(price=this.value)"><br><br>
+<input oninput="set(price=this.value)" setValue="price"><br><br>
 Quantity:<br>
-<input oninput="set(quantity=this.value)"><br><br>
+<input oninput="set(quantity=this.value)" setValue="quantity"><br><br>
 
 <h1 data="x"></h1>
 Price : <span data="price"></span><br>
 Quantity : <span data="quantity"></span><br>
-Total : <span data="price*quantity"></span>
+Total : <span data="price*quantity"></span><br>
+<button onclick="set(price++)"><span data="price"></span>+</button>
+
+
+<hr>
+<atom-timer style="font-size:45px"></atom-timer><br>
+<button onclick="toggleTimer()" data="activeTimer?'Durdur':'Başlat'"></button>
