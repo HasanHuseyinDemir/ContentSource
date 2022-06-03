@@ -1,6 +1,6 @@
 let PageTest={
     src:"./page-test.html",
-    type:"page",
+    type:"static-page",
     name:"page-test"
 }
 

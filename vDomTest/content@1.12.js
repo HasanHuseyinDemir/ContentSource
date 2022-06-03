@@ -22,6 +22,7 @@ contents.map(async(item)=>{
                     renderTest(data,item,"static-page");
                 }else{
                     createComponent(item.alt,data);
+                    control();
                 }
             };break;
             case "static-atom":createComponent(item.name,item.data());break;
