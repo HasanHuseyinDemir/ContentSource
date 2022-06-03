@@ -22,7 +22,7 @@ contents.map(async(item)=>{
                     renderTest(data,item,"static-page");
                 }else{
                     createComponent(item.alt,data);
-                    set();
+                    control();
                 }
             };break;
             case "static-atom":createComponent(item.name,item.data());break;
@@ -97,7 +97,6 @@ renderTest=(str,item,condition)=>{
             case "static-page":createComponent(item.alt,str);break;
         }
         if(item.type=="static-page"||item.type=="static-atom"||item.type=="static-composition"){
-            set();
         }else{
             if(item.prev==""){//INIT!
             item.prev=str;
@@ -128,7 +127,7 @@ renderTest=(str,item,condition)=>{
     }
         }else{
         let interp = str.slice(starter+first.length,endPoint)
-        let output =()=> {return `<c data='${interp}'></c>`};
+        let output =()=> {return eval(interp)};
         let clean = str.slice(0,starter)+output()+str.slice(endPoint+last.length);
         renderTest(clean,item,condition)
     }
