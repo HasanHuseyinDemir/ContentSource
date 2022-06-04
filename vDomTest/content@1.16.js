@@ -1,23 +1,16 @@
 let ________=0;
 var props={};
-contents.map(async(item,ind)=>{
+contents.map(async(item)=>{
         switch(item.type){
             case "page":{let source = await fetch(item.src);let data = await source.text();
             renderTest(data,item);
             item.render=(()=>{
                 let index = document.querySelectorAll(item.name);
                 index.forEach((i,index)=>{
-
-                    console.log(props);
-
-                    /////////////////////!!!!!!!!!!!!!!!!!!!!
-                    //item.name index data
-                    
-
-                    ///Burası boş ise dolduruyor.
                     let element = document.querySelectorAll(item.name)[index];
                     element.innerHTML.toString().length==0?element.innerHTML=item.data:"";
                 })
+                
             })
             }break;            
             case "atom":{
@@ -39,33 +32,7 @@ contents.map(async(item,ind)=>{
         
     })
 
-    interpTest=(str,item,index)=>{
-        const first = "<{";
-        const last = "}>";
-        let starter = str.search(first);
-        let endPoint = str.search(last);
-        let isStarter = starter>-1;
-        let isEndPoint = endPoint>-1;
-        let isPolated = (start,end )=>{
-            if(start==true&&end==true){
-                return true
-            }else{
-                return false;
-            }
-        }
-        if(isPolated(isStarter,isEndPoint)==false){
-                if(item.type=="page"){
-                    let element = document.querySelectorAll(item.name)[index];
-                    element.innerHTML!=str?element.innerHTML=str:"";
-                }
-            }else{
-            let interp = str.slice(starter+first.length,endPoint)
-            let output =()=> {return eval(interp)};
-            let clean = str.slice(0,starter)+output()+str.slice(endPoint+last.length);
-            interpTest(clean,item,index)
-        }
-        set();
-    }
+
 
 renderTest=(str,item,condition)=>{
     const first = "{{";
@@ -123,13 +90,43 @@ scriptTest=(str,item)=>{
                     proplist.map((items)=>{
                         eval(`props.${items}=${i.getAttribute(items)}`);
                     })
+                    item.data=str;
                     interpTest(str,item,index);
+                    props={};
                 })
         }else{
         let interp = str.slice(starter+first.length,endPoint)
         let output =()=> {eval(interp);return ""};
         let clean = str.slice(0,starter)+output()+str.slice(endPoint+last.length);
         scriptTest(clean,item)
+    }
+    set();
+}
+
+interpTest=(str,item,index)=>{
+    const first = "<{";
+    const last = "}>";
+    let starter = str.search(first);
+    let endPoint = str.search(last);
+    let isStarter = starter>-1;
+    let isEndPoint = endPoint>-1;
+    let isPolated = (start,end )=>{
+        if(start==true&&end==true){
+            return true
+        }else{
+            return false;
+        }
+    }
+    if(isPolated(isStarter,isEndPoint)==false){
+            if(item.type=="page"){
+                let element = document.querySelectorAll(item.name)[index];
+                str?element.innerHTML=str:element.innerHTML=item.data;
+            }
+        }else{
+        let interp = str.slice(starter+first.length,endPoint)
+        let output =()=> {return eval(interp)};
+        let clean = str.slice(0,starter)+output()+str.slice(endPoint+last.length);
+        interpTest(clean,item,index)
     }
     set();
 }
