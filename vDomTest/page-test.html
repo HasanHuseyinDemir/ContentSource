@@ -17,6 +17,9 @@ YEAMİN ET!
 
 {{toplam()}}
 
+
+<{ mount("YeniSayfa") }>
+
 <script>
     window.selamke=500;
     window.selammm=500;
@@ -26,4 +29,10 @@ YEAMİN ET!
     toplam=()=>{
         return `<h1>${selamke+selammm}</h1>`
     }
+    mount=(arg)=>{
+        console.log(`<${arg}></${arg}>`);
+        return `<${arg}></${arg}>`
+        val();
+    }
+
 </script>

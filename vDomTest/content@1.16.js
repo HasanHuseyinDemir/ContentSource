@@ -7,8 +7,9 @@ contents.map(async(item)=>{
             item.render=(()=>{
                 let index = document.querySelectorAll(item.name);
                 index.forEach((i,index)=>{
-                    let element = document.querySelectorAll(item.name)[index];
-                    element.innerHTML.toString().length==0?element.innerHTML=item.data:"";
+                    /*let element = document.querySelectorAll(item.name)[index];
+                    element.innerHTML.toString().length==0?element.innerHTML=item.data:"";*/
+                    renderTest(data,item);
                 })
                 
             })
@@ -120,7 +121,9 @@ interpTest=(str,item,index)=>{
     if(isPolated(isStarter,isEndPoint)==false){
             if(item.type=="page"){
                 let element = document.querySelectorAll(item.name)[index];
-                str?element.innerHTML=str:element.innerHTML=item.data;
+                if(str){
+                    element.innerHTML.length==0?element.innerHTML=str:"";
+                }
             }
         }else{
         let interp = str.slice(starter+first.length,endPoint)
