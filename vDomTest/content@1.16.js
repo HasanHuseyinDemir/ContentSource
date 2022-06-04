@@ -23,6 +23,7 @@ contents.map(async(item)=>{
                     })
                     }
             }break;
+            
         }
         
         ///RENDER SORUNLARINI ÇÖZMEK AMAÇLI
@@ -97,7 +98,7 @@ scriptTest=(str,item)=>{
                 })
         }else{
         let interp = str.slice(starter+first.length,endPoint)
-        let output =()=> {eval(interp);return ""};
+        let output =()=> {item.isEvaled?"":eval(interp);item.isEvaled=true;return ""};
         let clean = str.slice(0,starter)+output()+str.slice(endPoint+last.length);
         scriptTest(clean,item)
     }
