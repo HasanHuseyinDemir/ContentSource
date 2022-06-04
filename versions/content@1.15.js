@@ -58,7 +58,7 @@ renderTest=(str,item,condition)=>{
 };
 
 let set=()=>{
-    //contents.map((el)=>{if(el.type=="atom"){el.render()}});
+    contents.map((el)=>{if(el.type=="atom"){el.render()}});
     control();
 }
 
@@ -139,8 +139,8 @@ control=()=>{
         item.innerHTML.toString()!=filt?item.innerHTML=filt:"";  
     }
     /////////////////////////////////////////////////
-    inv?(eval(inv)?item.style.display="none":item.style.display="block"):"";
-    vis?(eval(vis)?item.style.display="block":item.style.display="none"):"";
+    inv?(eval(inv)?item.style.display="none":item.style.display=""):"";
+    vis?(eval(vis)?item.style.display="":item.style.display="none"):"";
     ///////////////////////////////////
     value?(item.innerHTML.toString()!=eval(value)?item.value=eval(value):""):"";  
     ////////////////////////////////////
