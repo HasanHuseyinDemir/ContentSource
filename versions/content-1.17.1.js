@@ -71,8 +71,8 @@ renTest=(str,item)=>{
 };
 
 interpTest=(str,item,index)=>{
-    const first = "{";
-    const last = "}";
+    const first = "{%";
+    const last = "%}";
     let starter = str.search(first);
     let endPoint = str.search(last);
     let isStarter = starter>-1;
