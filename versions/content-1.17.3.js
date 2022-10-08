@@ -4,7 +4,7 @@ var slot="";
 contents.map(async(item)=>{
         switch(item.type){
             case "page":{let source = await fetch(item.src);let data = await source.text();
-            data=(data.replaceAll("$_",item.name+"_")); //SemiLocalScope
+            data=(data.replaceAll("__",item.name+"_")); //SemiLocalScope
             scriptTest(data);
             renTest(data,item);
             item.render=(()=>{
