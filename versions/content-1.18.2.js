@@ -1,6 +1,6 @@
 let __=0;
 var props={};
-var slot=``;
+var slot="";
 contents.map(async(item)=>{
         switch(item.type){
             case "page":{let source = await fetch(item.src);let data = await source.text();
@@ -27,29 +27,12 @@ contents.map(async(item)=>{
             }break;
         }
         __++
-        if(__==contents.length){
+        if(__==contents.length){ 
             set();
             val();
             set();
         }
     })
-
-    loadContent=async(item)=>{
-        contents.push(item);
-        let source = await fetch(item.src);let data = await source.text();
-            data=`<div id="${item.name}">${data}</div>`;
-            data=(data.replaceAll("__",item.name+"_"));
-            scriptTest(data);
-            renTest(data,item);
-            item.render=(()=>{
-                let index = document.querySelectorAll(item.name);
-                index.forEach((i,index)=>{
-                    let element = document.querySelectorAll(item.name)[index];
-                    element.innerHTML.length==0?element.innerHTML=item.data:"";
-                })
-            })
-        val();
-    };
 
     content=async(item)=>{
         let source = await fetch(item);
@@ -59,7 +42,7 @@ contents.map(async(item)=>{
         window.${pageName}={
             type:"page",
             src:"${item}",
-            name:"${pageName}"
+            name:"${pageName}",
         }
         `);
         contents.push(eval(pageName));
@@ -74,7 +57,7 @@ contents.map(async(item)=>{
                     element.innerHTML.length==0?element.innerHTML=item.data:"";
                 })
             })
-        val();
+            val();
     };
     loadContents=(array)=>{
         array.map((item)=>{
@@ -178,6 +161,8 @@ scriptTest=(str,item)=>{
                     }       
         }
 };
+
+
 
 ctrl=()=>{
     document.body.querySelectorAll("*").forEach((item)=>{
