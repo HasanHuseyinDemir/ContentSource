@@ -223,17 +223,6 @@ scriptTest=(str,element,file,key)=>{
     scrlist.map((item)=>{
         if(item.toString()===arrays.toString()){
             valid=true;
-            console.log(
-                `
-                Asıl item
-                ${arrays.toString()}
-                <hr>
-                <hr> 
-                /n
-                Karşılaştırılan item
-                ${item.toString()}
-                `
-                );
         }
     });
     if(!valid){
