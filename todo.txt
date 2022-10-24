@@ -1,0 +1,34 @@
+[Tamamlandı => 1.19.2] - loadCss return edilecek style içine key özelliği ve #key özelliği
+
+    loadCSS=async(file,key)=>{
+        let data=await fetch(file);
+        let css=await data.text();
+        css=(css.replaceAll("__",key+"_"));
+        css=(css.replaceAll("#key",key));
+        css=`<style>${css}</style>`;
+        document.querySelector("#"+key).innerHTML+=css;
+    };
+
+[Tamamlandı => 1.19.2 ] - loadScript => key özelliği ve #key özelliği
+
+    loadScript=async(file,key)=>{
+        let data=await fetch(file);
+        let script=await data.text();
+        script=(script.replaceAll("__",key+"_"));
+        script=(script.replaceAll("#key",key));
+        await eval(script);
+        set();
+    };
+
+[] - Optimizasyon Güncellemesi
+    []-> Mesela set c dataları search eder ve değiştirir
+    []-> set <c visible="x==0">X 0 a eşittir</visible>
+    []-> set <c invisible="x==0">x 0 a eşit ise gizlidir</visible>
+    []-> {{=>ile <c data="
+    []-> }}=>ile "></c> yer değiştirir bu sayede sayfa yüklenirken hız kazanılır.
+    []-> Kodlamalardaki tekrarlar temizlenebilir
+    []-> 
+
+[!İptal] - set("","burası") gereksiz render edilmesini önlemek için kullanılacak.
+
+[] - inject attributesi eklenecek ve key kullanacak => <div inject="app.html" key="app"></div>
