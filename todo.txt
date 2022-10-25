@@ -21,14 +21,12 @@
     };
 
 [] - Optimizasyon Güncellemesi
-    []-> Mesela set c dataları search eder ve değiştirir
-    []-> set <c visible="x==0">X 0 a eşittir</visible>
-    []-> set <c invisible="x==0">x 0 a eşit ise gizlidir</visible>
-    []-> {{=>ile <c data="
-    []-> }}=>ile "></c> yer değiştirir bu sayede sayfa yüklenirken hız kazanılır.
+    [1.19.3]-> {{=>ile <c data="
+    [1.19.3]-> }}=>ile "></c> yer değiştirir bu sayede sayfa yüklenirken hız kazanılır.
+    [1.19.3]-> attribute temizliği
     []-> Kodlamalardaki tekrarlar temizlenebilir
-    []-> 
+    []-> __set değişkeni tanımlanır __set değişkeni sadece o sayfayı render eder.
 
 [!İptal] - set("","burası") gereksiz render edilmesini önlemek için kullanılacak.
 
-[] - inject attributesi eklenecek ve key kullanacak => <div inject="app.html" key="app"></div>
+[] - inject attributesi eklenecek ve key kullanacak => <c inject="app.html" key="app"></c>
