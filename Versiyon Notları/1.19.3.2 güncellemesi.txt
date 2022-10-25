@@ -1,0 +1,2 @@
+scope çağırmak için artık $$ kullanmak yeterlidir.
+bug fix ve küçük optimizasyonlar
