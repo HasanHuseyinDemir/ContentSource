@@ -1,0 +1,26 @@
+[Tamamlandı => 1.19.2] - loadCss return edilecek style içine key özelliği ve #key özelliği
+
+    loadCSS=async(file,key)=>{
+        let data=await fetch(file);
+        let css=await data.text();
+        css=(css.replaceAll("__",key+"_"));
+        css=(css.replaceAll("#key",key));
+        css=`<style>${css}</style>`;
+        document.querySelector("#"+key).innerHTML+=css;
+    };
+
+[Tamamlandı => 1.19.2 ] - loadScript => key özelliği ve #key özelliği
+
+    loadScript=async(file,key)=>{
+        let data=await fetch(file);
+        let script=await data.text();
+        script=(script.replaceAll("__",key+"_"));
+        script=(script.replaceAll("#key",key));
+        await eval(script);
+        set();
+    };
+
+[] - Optimizasyon Güncellemesi
+    [1.19.3]-> {{=>ile <c data="
+    [1.19.3]-> }}=>ile "></c> yer değiştirir bu sayede sayfa yüklenirken hız kazanılır.
+    [1.19.3]-> attribute temizliği
