@@ -1,0 +1,7 @@
+kod temizliği syntax değişimleri
+
+cRender => content.render
+cNamer => content.namer
+loadScript => load.script
+
+gibi özellikler değiştirilmiştir
