@@ -113,6 +113,7 @@ test={
         str=(str.replaceAll("__",specific+"_"));
         str=`<div id=${specific+"_"}>${str}</div>`;
         slot=document.querySelectorAll(to)[index].innerHTML;
+        test.script(str,file,key);
         test.interp(str,to,index,specific,file);
         props={};
         slot="";
@@ -128,7 +129,6 @@ test={
         let isPolated = content.dry.polated;
         if(isPolated(isStarter,isEndPoint)==false){
             let element = document.querySelectorAll(item)[index];
-            test.script(str,file,key);
             element.innerHTML.length!=str?element.innerHTML=str:"";
         }else{
             let interp = str.slice(starter+first.length,endPoint)
