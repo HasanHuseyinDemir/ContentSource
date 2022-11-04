@@ -119,8 +119,10 @@ load={
     },
     style:async(file,key,render)=>{
         data=await content.dry.fetchAndReplace(file,key);
-        data=`<style id=${key}>${data}</style>`;
-        document.querySelector(render?render:"body").innerHTML+=data;
+        style=document.createElement("style");
+        style.textContent=data;
+        console.log(style);
+        document.querySelector(render?render:"body").appendChild(style);
     },
     styles:(array,folder,key,render)=>{
         array.map((item)=>{
@@ -166,8 +168,6 @@ test={
             let element = document.querySelectorAll(item)[index];
             element.textContent=""
             str=(str.replaceAll("{{","<span class='set' data='").replaceAll("}}","'> </span>"));
-            //element.textContent="";
-            
             content.dry.dParser(str,element);
             
             //script ve defer içeriğinden ayrılıp ayriyeten teste tabi tutulması gerekir
