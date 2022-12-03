@@ -1,7 +1,3 @@
 
     []-> Kodlamalardaki tekrarlar temizlenebilir
     []-> __set değişkeni tanımlanır __set değişkeni sadece o sayfayı render eder.
-
-[!İptal] - set("","burası") gereksiz render edilmesini önlemek için kullanılacak.
-
-[] - inject attributesi eklenecek ve key kullanacak => <c inject="app.html" key="app"></c>
