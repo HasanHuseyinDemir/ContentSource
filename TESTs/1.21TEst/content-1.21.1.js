@@ -16,7 +16,8 @@ content={
     render:async(item,to,key)=>{
         data=await content.dry.fetch(item);
         data=content.namer(data);
-        test.ren(data,to,key,item);
+        content.cache[item] ? "":content.cache[item]=new Object();content.cache[item].data=data;
+        test.ren(content.cache[item].data,to,key,item);
         content.statistics.latestRendered={item:item,to:to,key:key}
     },
     cache:{
@@ -30,7 +31,7 @@ content={
     }
 
     */
-    
+
 
     },
     namer:(item)=>{
