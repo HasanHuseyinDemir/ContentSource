@@ -19,6 +19,20 @@ content={
         test.ren(data,to,key,item);
         content.statistics.latestRendered={item:item,to:to,key:key}
     },
+    cache:{
+    //Yüklenen her dosya buraya kayıt edilir ve buradan işlenir ve bir daha import edilmez.
+    /*
+
+    "./app.html":{
+        data:`<div>Merhaba</div>`
+        script:`console.log("Merhaba")`
+        unmount:``
+    }
+
+    */
+    
+
+    },
     namer:(item)=>{
         let data = item;
         let last="/>";
@@ -146,6 +160,10 @@ test={
         let specific=attr?attr:key?key:keys;
         str=(str.replaceAll('$$',specific));
         str=(str.replaceAll("__",specific+"_"));
+
+        //Eğer specific tanımlanmadıysa tanımla yoksa boşver
+        specific in window ? "" : eval(`${specific}=new Object()`)
+
         if(to.includes("#")||to.includes(".")){
         }else{
             str=`<div id=${specific+"_"}>${str}</div>`;
@@ -299,5 +317,8 @@ w=()=>{
 }
 
 document.querySelector("html").addEventListener("click",()=>{
+    set();
+})
+document.querySelector("html").addEventListener("beforeinput",()=>{
     set();
 })

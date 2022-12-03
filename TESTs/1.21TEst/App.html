@@ -1,11 +1,20 @@
 <script>
-    $$={};
-    $$.x=10;
-    
+    $$.x=0;
+    $$.selam=()=>{
+        console.log($$.x +" Artık bitti!")
+    }
+</script>
+
+<script id="onmount">
+    console.log("Merhaba")
+</script>
+
+<script id="unmount">
+
 </script>
 
 Selamlar {{$$.x}}
 
-<button onclick="$$.x++">
-    {{$$.x}}
-</button>
+<button onclick="$$.x++">{{$$.x}}</button>
+
+<button onclick="$$.selam()">Konsola Yazdır</button>
